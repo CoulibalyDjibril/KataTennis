@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Match {
 
-	private static final Player Player = null;
+	
 	private ArrayList<Set> partie;
 	private Player p1;
 	private Player p2;
