@@ -11,6 +11,7 @@ import org.junit.Test;
 import tennis.model.Match;
 import tennis.model.Player;
 import tennis.model.Point;
+import tennis.model.Set;
 
 public class TestGame {
 
@@ -137,6 +138,44 @@ private Match match;
 
 	
 	
+	@Test
+	public void testWinTieBreak(){
+		WinOneGame(match,Serena);
+		IntStream.range(1, 6).forEach((Integer)->{
+			WinOneGame(match,Vanessa);
+			WinOneGame(match,Serena);
+		});	
+			//Gagner  le tie break
+			
+			IntStream.rangeClosed(1, 7).forEach((Integer)->{
+				match.winBallTieBreak(match, Vanessa);;
+				
+			});
+			Set set = null;
+			assertTrue(match.getWinGame(set, Vanessa)==7);
+			assertTrue(Vanessa.equals(set.getGagnant()));
+		
+	}
+	
+	
+	
+	@Test
+	public void testWinSet(){
+		Set set = null;
+		WinOneSet(match,Vanessa);
+		assertTrue(match.getWinGame(set, Vanessa)==6);
+		assertTrue(Vanessa.equals(set.getGagnant()));
+	}
+	
+	
+	
+
+	@Test
+	public void testWinMatch(){
+		IntStream.rangeClosed(1, 2).forEach((Integer)->{
+			WinOneSet(match,Vanessa);
+		});
+	}
 
 /*
  * gagner un jeu

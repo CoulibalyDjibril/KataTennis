@@ -10,6 +10,12 @@ public class Set {
 	private Player p1;
 	private Player p2;
 	private Player gagnant;
+	private List<Game> game;
+	
+	
+	
+	
+	
 	public Player getGagnant() {
 		return gagnant;
 	}
@@ -20,7 +26,7 @@ public class Set {
 	}
 
 
-	private List<Game> game;
+	
 	
 	 public void addGame(Game game) {
 	        this.game.add(game);

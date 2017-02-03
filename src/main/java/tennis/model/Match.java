@@ -44,9 +44,6 @@ public class Match {
 		this.addSet(set);
 
 	}
-	
-	
-	
 
 	/*
 	 * recuperer le score d'un joueur
@@ -70,7 +67,8 @@ public class Match {
 		Player p2 = match.p2;
 		Integer scoreP2 = (Integer) tieBreak.getScores().get(p2);
 		tieBreak.getScores().put(p1, scoreP1 += 1);
-
+		// le joueur P1 gagne si son score est superieur à 7 et à 2 points de
+		// plus que P2
 		if (scoreP1 >= 7 && Math.abs(scoreP1 - scoreP2) >= 2) {
 			WinGame(match, p1);
 		}
@@ -117,8 +115,13 @@ public class Match {
 
 	}
 
+	public long getWinGame(Match match, Player p) {
+		Set set = null;
+		return getWinGame(set, p);
+	}
+
 	/*
-	 * nombre de Jeux gagnés
+	 * nombre de Jeux gagnés dans un set
 	 * 
 	 * 
 	 */
@@ -158,21 +161,20 @@ public class Match {
 	/*
 	 * gagner un jeu
 	 */
-	public void WinOneGame(Match match, Player p){
+	public void WinOneGame(Match match, Player p) {
 		IntStream.rangeClosed(1, 4).forEach((Integer) -> {
-            match.winBallGame(match, p);
-        });
+			match.winBallGame(match, p);
+		});
 	}
-	
-	
+
 	/*
 	 * gagner un set
 	 * 
 	 */
-	
-	public void WinOneSet(Match match , Player p){
-		IntStream.rangeClosed(1,6).forEach((Integer) ->{
-			WinOneGame(match,p);
+
+	public void WinOneSet(Match match, Player p) {
+		IntStream.rangeClosed(1, 6).forEach((Integer) -> {
+			WinOneGame(match, p);
 		});
 	}
 	/*
@@ -182,11 +184,9 @@ public class Match {
 	public void WinGame(Match match, Player p1) {
 		Game game = null;
 		game.setWinner(p1);
+
 	}
 
-	
-	
-	
 	/*
 	 * le gagnant du match
 	 * 
